@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+overflow:hidden;
+height:100vh;
+background:linear-gradient(135deg,#ff4b91,#8e44ad,#4facfe);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.screen{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:1s;
+}
+
+.lock{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(15px);
+padding:35px;
+border-radius:25px;
+box-shadow:0 0 35px rgba(255,255,255,.3);
+text-align:center;
+color:white;
+}
+
+.lock h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.lock p{
+margin-bottom:20px;
+}
+
+button{
+padding:15px 35px;
+border:none;
+border-radius:50px;
+font-size:18px;
+background:#fff;
+color:#ff2d75;
+font-weight:bold;
+cursor:pointer;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+}
+
+#birthday{
+opacity:0;
+pointer-events:none;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+#birthday.show{
+opacity:1;
+pointer-events:auto;
+}
+
+#birthday h1{
+font-size:42px;
+animation:glow 2s infinite alternate;
+}
+
+#birthday p{
+margin-top:15px;
+font-size:18px;
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 10px white;
+}
+to{
+text-shadow:0 0 30px yellow;
+}
+}
+
+.heart{
+position:absolute;
+bottom:-20px;
+font-size:22px;
+animation:float 8s linear infinite;
+opacity:.8;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div id="lockScreen" class="screen">
+<div class="lock">
+<h1>🔒 Locked</h1>
+<p>Tap below to unlock your Birthday Surprise ❤️</p>
+<button onclick="unlock()">Unlock</button>
+</div>
+</div>
+
+<div id="birthday" class="screen">
+<h1>🎉 Happy Birthday Falak ❤️</h1>
+<p>Welcome to your special surprise...</p>
+</div>
+
+<script>
+
+function unlock(){
+document.getElementById("lockScreen").classList.add("hidden");
+
+setTimeout(()=>{
+document.getElementById("birthday").classList.add("show");
+},600);
+}
+
+function hearts(){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(20+Math.random()*25)+"px";
+h.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},9000);
+}
+
+setInterval(hearts,300);
+
+</script>
+
+</body>
+  </html>
